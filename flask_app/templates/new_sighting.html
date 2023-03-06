@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Sighting</title>
+</head>
+<body>
+    <h1>Report a Sighting, {{ session.name }}</h1>
+
+        {% with messages = get_flashed_messages() %} <!-- declare a variable called messages -->
+        {% if messages %} <!-- check if there are any messages -->
+            {% for message in messages %} <!-- loop through the messages -->
+                <p style="color: red">{{message}}</p> <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="/create/sighting" method="post">
+        <label for="text">Location:</label>
+        <input type="text" name="location">
+        <br>
+        <label for="text">What Happened:</label>
+        <input type="text" name="what_happened">
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" name="date">
+        <br>
+        <label for="number"> # of Sasquatches:</label>
+        <input type="number" name="how_many">
+        <br>
+        <input type="submit" name="" value="Report">
+    </form>
+    <a href="/logout"><button>Logout</button></a>
+    <a href="/dashboard"><button>Dashboard</button></a>
+</body>
+</html>
